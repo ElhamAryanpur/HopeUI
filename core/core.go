@@ -3,15 +3,13 @@ package HopeUI
 import (
 	RayLib "github.com/gen2brain/raylib-go/raylib"
 	Helper "HopeUI/lib/helper"
-	Basic "HopeUI/lib/components/Basic"
-	Draw "HopeUI/lib/components/Draw"
+	Widget "HopeUI/lib/components/Basic"
 )
 
 // HopeUI is core Class and Hub for all other features
 type HopeUI struct{
-	*Basic.Basic
-	*Draw.Draw
 	*Helper.Helper
+	Widget Widget.Basic
 }
 
 // Used for callbacks
@@ -31,7 +29,8 @@ func (h *HopeUI) Init(width int32, height int32, title string, background Helper
 	RayLib.InitWindow(width, height, title)
 	RayLib.SetTargetFPS(60)
 
-	
+	h.Widget = Widget.New()
+	h.Widget.SetFontSetting(25, 13)
 
 	// Listen For Window Closing
 	for !RayLib.WindowShouldClose() {

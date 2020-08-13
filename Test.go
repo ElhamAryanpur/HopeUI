@@ -6,7 +6,13 @@ import (
 
 func main() {
 	hui := HopeUI.New()
-	hui.Init(800, 600, "Hope", hui.NewColor(255, 255, 255, 255), func() {
-		hui.Label("Heyooo", -5, -5, 25, hui.NewColor(15, 15, 15, 255))
+
+	backgroundColor := hui.NewColor(18, 25, 32, 1)
+	elementBackgroundColor := hui.NewColor(60, 125, 217, 1)
+	fontColor := hui.NewColor(141, 189, 255, 1)
+
+	hui.Init(800, 600, "Hope", backgroundColor, func() {
+		hui.Widget.Label("Heyooo", 5, 5, fontColor)
+		hui.Widget.Button("Button", 50, 50, 50, 50, elementBackgroundColor)
 	})
 }

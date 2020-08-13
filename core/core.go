@@ -25,7 +25,7 @@ func New() HopeUI {
 // Init will initialize main things
 func (h *HopeUI) Init(width int32, height int32, title string, background Helper.Color, callback fn) {
 
-	RayLib.SetConfigFlags(RayLib.FlagWindowUndecorated)
+	RayLib.SetConfigFlags(RayLib.FlagWindowResizable)
 
 	// init Window and settings
 	RayLib.InitWindow(width, height, title)

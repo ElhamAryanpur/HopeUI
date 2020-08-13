@@ -2,26 +2,20 @@ package HopeUI
 
 import (
 	RayLib "github.com/gen2brain/raylib-go/raylib"
+	Helper "HopeUI/lib/helper"
+	Basic "HopeUI/lib/components/Basic"
+	Draw "HopeUI/lib/components/Draw"
 )
 
 // HopeUI is core Class and Hub for all other features
-type HopeUI struct{}
+type HopeUI struct{
+	*Basic.Basic
+	*Draw.Draw
+	*Helper.Helper
+}
 
 // Used for callbacks
 type fn func()
-
-// Color type, RGBA (32bit)
-type Color struct {
-	R uint8
-	G uint8
-	B uint8
-	A uint8
-}
-
-// NewColor used to generate a color object
-func (h *HopeUI) NewColor(R uint8, G uint8, B uint8, A uint8) Color {
-	return Color{R: R, G: G, B: B, A: A}
-}
 
 // New is constructor
 func New() HopeUI {
@@ -29,11 +23,15 @@ func New() HopeUI {
 }
 
 // Init will initialize main things
-func (h *HopeUI) Init(width int32, height int32, title string, background Color, callback fn) {
+func (h *HopeUI) Init(width int32, height int32, title string, background Helper.Color, callback fn) {
+
+	RayLib.SetConfigFlags(RayLib.FlagWindowUndecorated)
 
 	// init Window and settings
 	RayLib.InitWindow(width, height, title)
 	RayLib.SetTargetFPS(60)
+
+	
 
 	// Listen For Window Closing
 	for !RayLib.WindowShouldClose() {
@@ -54,10 +52,4 @@ func (h *HopeUI) Init(width int32, height int32, title string, background Color,
 
 	// Close Window When Done
 	RayLib.CloseWindow()
-}
-
-// Label will draw a text
-func (h *HopeUI) Label(text string, x int32, y int32, fontSize int32, color Color) {
-	newColor := RayLib.Color{R: color.R, G: color.G, B: color.B, A: color.A}
-	RayLib.DrawText(text, x, y, fontSize, newColor)
 }

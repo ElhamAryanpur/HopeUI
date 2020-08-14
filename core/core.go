@@ -1,19 +1,17 @@
 package HopeUI
 
 import (
-	RayLib "github.com/gen2brain/raylib-go/raylib"
+	Widget "HopeUI/lib/components"
 	Helper "HopeUI/lib/helper"
-	Widget "HopeUI/lib/components/Basic"
+
+	RayLib "github.com/gen2brain/raylib-go/raylib"
 )
 
 // HopeUI is core Class and Hub for all other features
-type HopeUI struct{
+type HopeUI struct {
 	*Helper.Helper
 	Widget Widget.Basic
 }
-
-// Used for callbacks
-type fn func()
 
 // New is constructor
 func New() HopeUI {
@@ -21,8 +19,9 @@ func New() HopeUI {
 }
 
 // Init will initialize main things
-func (h *HopeUI) Init(width int32, height int32, title string, background Helper.Color, callback fn) {
+func (h *HopeUI) Init(width int32, height int32, title string, background Helper.Color, callback Helper.Function) {
 
+	// This glag allows window resize
 	RayLib.SetConfigFlags(RayLib.FlagWindowResizable)
 
 	// init Window and settings

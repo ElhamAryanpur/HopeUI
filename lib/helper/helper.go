@@ -1,7 +1,5 @@
 package HopeUI
 
-import RayLib "github.com/gen2brain/raylib-go/raylib"
-
 // Helper contains helpful functions
 type Helper struct{}
 
@@ -14,29 +12,6 @@ type Color struct {
 	G uint8
 	B uint8
 	A uint8
-}
-
-// Style defines styling of elements
-type Style struct {
-	x          int32
-	y          int32
-	width      int32
-	height     int32
-	background Color
-	foreground Color
-	font       RayLib.Font
-	fontSize   int
-	spacing    int
-	visible    bool
-}
-
-// Element defines main details about each widget
-type Element struct {
-	id      string
-	element string
-	content string
-	style   Style
-	zIndex  int
 }
 
 // NewColor used to generate a color object

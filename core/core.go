@@ -26,7 +26,7 @@ func (h *HopeUI) Init(width int32, height int32, title string, background Helper
 
 	// init Window and settings
 	RayLib.InitWindow(width, height, title)
-	RayLib.SetTargetFPS(60)
+	RayLib.SetTargetFPS(1000)
 
 	h.Widget = Widget.New()
 
@@ -39,6 +39,8 @@ func (h *HopeUI) Init(width int32, height int32, title string, background Helper
 		// Clean Background
 		newColor := RayLib.Color{R: background.R, G: background.G, B: background.B, A: background.A}
 		RayLib.ClearBackground(newColor)
+
+		RayLib.DrawFPS(10, 10)
 
 		// Rest Of Code
 		callback()

@@ -30,7 +30,6 @@ func (h *HopeUI) Init(width int32, height int32, title string, background Helper
 	RayLib.SetTargetFPS(60)
 
 	h.Widget = Widget.New()
-	h.Widget.SetFontSetting(25, 13)
 
 	// Listen For Window Closing
 	for !RayLib.WindowShouldClose() {

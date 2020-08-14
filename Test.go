@@ -12,9 +12,9 @@ func main() {
 	fontColor := hui.RGBA(141, 189, 255, 255)
 
 	hui.Init(800, 600, "Hope", backgroundColor, func() {
-		Label := hui.Widget.NewElement("Label");
-		Label.SetColor(elementBackgroundColor, fontColor);
-		Label.SetPosition(100, 100);
+		Label := hui.Widget.NewElement("Label")
+		Label.SetColor(elementBackgroundColor, fontColor)
+		Label.SetPosition(100, 100)
 		Label.SetContent("Hello World!")
 
 		hui.Widget.Render(Label)

@@ -7,11 +7,19 @@ import (
 )
 
 // Basic contains all basic components
-type Basic struct{}
+type Basic struct {
+	ElementModel EM
+}
+
+type EM struct {
+	model  []map[int]Element
+	length int
+}
 
 // New will initialize basic values
 func New() Basic {
-	return Basic{}
+	var ElementModel []map[int]Element
+	return Basic{ElementModel: EM{model: ElementModel, length: 0}}
 }
 
 //===========================================================================//
@@ -54,13 +62,18 @@ func (b *Basic) NewElement(elementName string) Element {
 		spacing:    2,
 		visible:    true,
 	}
-	return Element{
+	e := Element{
 		id:      "undefined",
 		element: elementName,
 		content: "",
 		style:   s,
 		zIndex:  0,
 	}
+
+	//b.ElementModel.length += 1
+	//b.ElementModel.model[b.ElementModel.length] = e
+
+	return e
 }
 
 // Render function will render the element on the viewport
@@ -80,19 +93,19 @@ func (b *Basic) Render(e Element) {
 //===========================================================================//
 
 // SetColor will change foreground and background of element
-func (e *Element) SetColor(background, foreground Helper.Color){
+func (e *Element) SetColor(background, foreground Helper.Color) {
 	e.style.foreground = foreground
 	e.style.background = background
 }
 
 // SetPosition will change X and Y of the element
-func (e *Element) SetPosition(X, Y int32){
+func (e *Element) SetPosition(X, Y int32) {
 	e.style.x = X
 	e.style.y = Y
 }
 
 // SetContent will change the content value of the element
-func (e *Element) SetContent(text string){
+func (e *Element) SetContent(text string) {
 	e.content = text
 }
 

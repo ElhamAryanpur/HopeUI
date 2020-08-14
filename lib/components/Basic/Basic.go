@@ -61,9 +61,15 @@ func (b *Basic) Button(Text string, x, y, width, height int32, background, foreg
 	RayLib.DrawRectangle(x, y, width, height, newBackground)
 	b.Label(Text, targetX, targetY, foreground);
 
-	//mousePos := RayLib.GetMousePosition();
+	mousePos := RayLib.GetMousePosition();
+	mx := int32(mousePos.X)
+	my := int32(mousePos.Y)
 	
-	println(int32(textSize.X) / 2)
+	if mx > x && mx < x + width && my > y && my < y + height {
+		if RayLib.IsMouseButtonPressed(0) == true{
+			println("Pressed!")
+		}
+	}
 }
 
 //===========================================================================//

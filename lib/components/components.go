@@ -50,6 +50,7 @@ type Element struct {
 
 // NewElement creates a new element to render
 func (b *Basic) NewElement(elementName string) Element {
+	b.ElementModel.length += 1
 	s := Style{
 		x:          0,
 		y:          0,
@@ -62,18 +63,13 @@ func (b *Basic) NewElement(elementName string) Element {
 		spacing:    2,
 		visible:    true,
 	}
-	e := Element{
+	return Element{
 		id:      "undefined",
 		element: elementName,
 		content: "",
 		style:   s,
-		zIndex:  0,
+		zIndex:  b.ElementModel.length,
 	}
-
-	//b.ElementModel.length += 1
-	//b.ElementModel.model[b.ElementModel.length] = e
-
-	return e
 }
 
 // Render function will render the element on the viewport

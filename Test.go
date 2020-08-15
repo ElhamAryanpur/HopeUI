@@ -16,7 +16,7 @@ func main() {
 		Label.SetColor(elementBackgroundColor, fontColor)
 		Label.SetPosition(100, 100)
 		Label.SetContent("Hello World!")
-
+		//hui.Widget.Label(Label);
 		hui.Widget.Render(Label)
 	})
 }

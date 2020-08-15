@@ -15,7 +15,10 @@ type HopeUI struct {
 
 // New is constructor
 func New() HopeUI {
-	return HopeUI{}
+	h := HopeUI{}
+	// Init Widgets
+	h.Widget = Widget.New()
+	return h
 }
 
 // Init will initialize main things
@@ -27,9 +30,6 @@ func (h *HopeUI) Init(width int32, height int32, title string, background Helper
 	// init Window and settings
 	RayLib.InitWindow(width, height, title)
 	RayLib.SetTargetFPS(1000)
-
-	// Init Widgets
-	h.Widget = Widget.New()
 
 	// Listen For Window Closing
 	for !RayLib.WindowShouldClose() {

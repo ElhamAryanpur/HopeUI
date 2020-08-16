@@ -32,52 +32,18 @@ void HUI_null() {}
 
 HUI_Element NewElement(char *name)
 {
-    Color background = {r : 255, g : 255, b : 255, a : 255};
-    Color foreground = {r : 0, g : 0, b : 0, a : 255};
+    Color background = {255, 255, 255, 255};
+    Color foreground = {0, 0, 0, 255};
 
-    HUI_Style style = {
-        x : 0,
-        y : 0,
-        width : 100,
-        height : 50,
-        background : background,
-        foreground : foreground,
-        font : GetFontDefault(),
-        fontSize : 25,
-        spacing : 2,
-        visible : true
-    };
+    HUI_Style style = {0, 0, 100, 50,
+                       background, foreground,
+                       GetFontDefault(),
+                       25, 2, true};
 
-    HUI_Element e = {
-        id : "undefined",
-        element : name,
-        content : "",
-        style : style,
-        zIndex : 0,
-        callback : &HUI_null
-    };
+    HUI_Element e = {"undefined", name, "",
+                     style, 0, &HUI_null};
 
     return e;
-}
-
-HUI_Element HUI_SetColor(HUI_Element element, Color background, Color foreground)
-{
-    element.style.background = background;
-    element.style.foreground = foreground;
-    return element;
-}
-
-HUI_Element HUI_SetPosition(HUI_Element element, int x, int y)
-{
-    element.style.x = x;
-    element.style.y = y;
-    return element;
-}
-
-HUI_Element HUI_SetContent(HUI_Element element, char *text)
-{
-    element.content = text;
-    return element;
 }
 
 void HUI_Label(HUI_Element data)
@@ -167,13 +133,15 @@ void HUI_Button(HUI_Element element, functiontype callback)
 
 void HUI_Render(HUI_Element element)
 {
+
     if (element.style.visible == true)
     {
-        if (element.element == "Label")
+        if (strcmp(element.element, "Label") == 0)
         {
+            printf("Label!");
             HUI_Label(element);
         }
-        else if (element.element == "Button")
+        else if (strcmp(element.element, "Button") == 0)
         {
             HUI_Button(element, element.callback);
         }

@@ -1,7 +1,7 @@
 cd build
 cmake ../
 cmake --build .
-mv Debug/HopeUI.exe ../bin
+mv Debug/HopeUI ../bin
 cd ../bin
-start HopeUI.exe
+bash HopeUI
 exit

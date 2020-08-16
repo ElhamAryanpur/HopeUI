@@ -1,7 +1,8 @@
 #include "HopeUI.h"
 #include <stdio.h>
 
-void event(){
+void event()
+{
     printf("CLICKED!");
 }
 
@@ -12,7 +13,7 @@ void gameLoop()
     // L = HUI_SetContent(L, "Hello World!");
     // L = HUI_SetPosition(L, 50, 50);
 
-    Color textColor = {r : 141, g : 189, b : 255, a : 255};
+    Color textColor = {141, 189, 255, 255};
     L.style.foreground = textColor;
     L.content = "Hello World!";
     L.style.x = 50;
@@ -27,7 +28,7 @@ void gameLoop()
 int main(void)
 {
     functiontype callback = &gameLoop;
-    Color background = {r : 18, g : 25, b : 32, a : 255};
+    Color background = {18, 25, 32, 255};
 
     HUI_Init(800, 600, "Hope", background, callback);
 

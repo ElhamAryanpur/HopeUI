@@ -31,7 +31,7 @@ This will take care of downloading and setting up. and will produce a binary at 
 
 ## Custom Tests
 
-The original file that will get compiled is `Test.c`. To change and use your own file for compile, change the `CMakeLists.txt` line `33` column `32` the text `Test.c` to your own file name.
+The original file that will get compiled is `Test.c`. To change and use your own file for compile, change the `CMakeLists.txt` line `7` the text `Test.c` to your own file name.
 
 ## Documentation
 

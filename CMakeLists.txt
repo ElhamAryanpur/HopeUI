@@ -1,6 +1,13 @@
 cmake_minimum_required(VERSION 3.11) # FetchContent is available in 3.11+
 project(HopeUI)
 
+#============================ Main File ================================#
+
+# Change the Test.c to your own code
+SET(mainFile Test.c)
+
+#=======================================================================#
+
 # Set this to the minimal version you want to support
 find_package(raylib 3.0 QUIET) # Let CMake search for a raylib-config.cmake
 
@@ -30,8 +37,12 @@ endif()
 
 # This is the main part:
 
-add_executable(${PROJECT_NAME} Test.c)
+add_subdirectory(HopeUISrc)
+include_directories(HopeUISrc)
+
+add_executable(${PROJECT_NAME} ${mainFile})
 #set(raylib_VERBOSE 1)
 target_link_libraries(${PROJECT_NAME} raylib)
+target_link_libraries(${PROJECT_NAME} HopeUISrc)
 
 # That's it! You should have an example executable that you can run. Have fun!

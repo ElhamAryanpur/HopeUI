@@ -16,13 +16,14 @@ typedef struct HUI_Style
     int fontSize;
     int spacing;
     bool visible;
+    float border_roundness;
 } HUI_Style;
 
 typedef struct HUI_Element
 {
-    char *id;
-    char *element;
-    char *content;
+    char id;
+    char element;
+    char content;
     HUI_Style style;
     int zIndex;
     functiontype callback;
@@ -38,7 +39,7 @@ HUI_Element NewElement(char *name)
     HUI_Style style = {0, 0, 100, 50,
                        background, foreground,
                        GetFontDefault(),
-                       25, 2, true};
+                       25, 2, true, 0};
 
     HUI_Element e = {"undefined", name, "",
                      style, 0, &HUI_null};
@@ -96,12 +97,17 @@ void HUI_Button(HUI_Element element, functiontype callback)
         targetY = element.style.y;
     }
 
-    DrawRectangle(
+    const Rectangle rec = {
         element.style.x,
         element.style.y,
         element.style.width,
-        element.style.height,
-        element.style.background);
+        element.style.height};
+
+    DrawRectangleRounded(
+        rec,
+        element.style.border_roundness,
+        24, element.style.background);
+
     HUI_Element button_text = element;
     button_text.style.x = targetX;
     button_text.style.y = targetY;
@@ -117,9 +123,10 @@ void HUI_Button(HUI_Element element, functiontype callback)
     {
         if (IsMouseButtonDown(0) == true)
         {
-            DrawRectangle(
-                x, y, width, height,
-                element.style.foreground);
+            DrawRectangleRounded(
+                rec,
+                element.style.border_roundness,
+                24, element.style.foreground);
             HUI_Element new_button_text = button_text;
             new_button_text.style.foreground = element.style.background;
             HUI_Label(new_button_text);

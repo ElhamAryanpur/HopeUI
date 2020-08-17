@@ -4,36 +4,21 @@
 #include "components.h"
 
 // This will initialize main things
-void HUI_Init(int width, int height, char* title, Color background, functiontype callback){
+#define WINDOW_START(width, height, title, background) \
+    {                                                  \
+        SetConfigFlags(FLAG_WINDOW_RESIZABLE);         \
+        SetTraceLogLevel(LOG_ERROR);                   \
+        InitWindow(width, height, title);              \
+        SetTargetFPS(60);                              \
+        while (!WindowShouldClose())                   \
+        {                                              \
+            BeginDrawing();                            \
+            ClearBackground(background);               \
+            DrawFPS(10, 10);
 
-    // This flag allows window resize
-    SetConfigFlags(FLAG_WINDOW_RESIZABLE);
-
-    // Change log level
-    SetTraceLogLevel(LOG_ERROR);
-
-    // init Window and settings
-    InitWindow(width, height, title);
-    SetTargetFPS(1000);
-
-    // Listen for window closing
-    while (!WindowShouldClose()){
-
-        // Start drawing things on screen
-        BeginDrawing();
-
-        // Clean background
-        ClearBackground(background);
-
-        DrawFPS(10, 10);
-
-        // Rest of code
-        callback();
-
-        // Don't draw anymore
-        EndDrawing();
+// And to end the drawing and window
+#define WINDOW_END \
+    EndDrawing();  \
+    }              \
+    CloseWindow(); \
     }
-
-    // Close window when done
-    CloseWindow();
-}

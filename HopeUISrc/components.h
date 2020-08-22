@@ -21,9 +21,9 @@ typedef struct HUI_Style
 
 typedef struct HUI_Element
 {
-    char id;
-    char element;
-    char content;
+    char *id;
+    char *element;
+    char *content;
     HUI_Style style;
     int zIndex;
     functiontype callback;

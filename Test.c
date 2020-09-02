@@ -1,16 +1,8 @@
 #include "HopeUI.h"
-#include <stdio.h>
 
-void event()
-{
-    printf("CLICKED!");
-}
+int main(){
+    Color background = {255, 255, 255, 255};
+    HUI_Window_Start(800, 600, "Hi", background);
 
-int main(void)
-{
-    Color background = {18, 25, 32, 255};
-
-    HUI_Setup();
-    getchar();
-    return 0;
+    HUI_Window_End;
 }

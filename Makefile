@@ -13,9 +13,6 @@ Flags = -lopengl32 -lgdi32
 # Include
 Include = -I./dep/raylib/src -I./HopeUI
 
-# set back to root from raylib
-raylibexit = ../../../
-
 # set raylib src path
 raylibsrc = ./dep/raylib/src
 

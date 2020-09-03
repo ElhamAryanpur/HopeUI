@@ -4,7 +4,7 @@
 #include "ECS.h"
 
 // Label
-void HUI_Label(HUI_Element data)
+static void HUI_Label(HUI_Element data)
 {
     HUI_Style ds = data.style;
     Color color = data.style.foreground;
@@ -22,7 +22,7 @@ void HUI_Label(HUI_Element data)
 }
 
 // Button
-void HUI_Button(HUI_Element element, functiontype callback)
+static void HUI_Button(HUI_Element element, functiontype callback)
 {
     int width = element.style.width;
     int height = element.style.height;
@@ -96,7 +96,7 @@ void HUI_Button(HUI_Element element, functiontype callback)
     }
 }
 
-void HUI_Render(HUI_Element element)
+static void HUI_Render(HUI_Element element)
 {
     if (element.style.visible == true)
     {
@@ -110,6 +110,14 @@ void HUI_Render(HUI_Element element)
         }
     }
 }
+
+// Renderer class
+struct HUI_Renderer
+{
+    void (*Label)(HUI_Element data);
+    void (*Button)(HUI_Element data, functiontype callback);
+    void (*Render)(HUI_Element data);
+} HUI_Renderer;
 
 // This will initialize main things
 #define HUI_Window_Start(width, height, title, background) \

@@ -10,11 +10,11 @@ CC = gcc
 # Flags
 Flags = -lopengl32 -lgdi32
 
-# Include
-Include = -I./dep/raylib/src -I./HopeUI
-
 # set raylib src path
 raylibsrc = ./dep/raylib/src
+
+# Include
+Include = -I${raylibsrc} -I./HopeUI
 
 # Set make command
 ifeq (${OS},Windows_NT)

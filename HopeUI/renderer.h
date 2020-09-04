@@ -1,10 +1,11 @@
 #pragma once
 
-#include "raylib.h"
 #include "ECS.h"
+#include "renderer.h"
+#include "raylib.h"
 
 // Label
-static void HUI_Label(HUI_Element data)
+void r1(HUI_Element data)
 {
     HUI_Style ds = data.style;
     Color color = data.style.foreground;
@@ -22,7 +23,7 @@ static void HUI_Label(HUI_Element data)
 }
 
 // Button
-static void HUI_Button(HUI_Element element, functiontype callback)
+void r2(HUI_Element element, functiontype callback)
 {
     int width = element.style.width;
     int height = element.style.height;
@@ -69,7 +70,7 @@ static void HUI_Button(HUI_Element element, functiontype callback)
     HUI_Element button_text = element;
     button_text.style.x = targetX;
     button_text.style.y = targetY;
-    HUI_Label(button_text);
+    r1(button_text);
 
     Vector2 mousePos = GetMousePosition();
     int mx = (int)mousePos.x;
@@ -87,7 +88,7 @@ static void HUI_Button(HUI_Element element, functiontype callback)
                 24, element.style.foreground);
             HUI_Element new_button_text = button_text;
             new_button_text.style.foreground = element.style.background;
-            HUI_Label(new_button_text);
+            r1(new_button_text);
         }
         if (IsMouseButtonReleased(0) == true)
         {
@@ -96,17 +97,18 @@ static void HUI_Button(HUI_Element element, functiontype callback)
     }
 }
 
-static void HUI_Render(HUI_Element element)
+// Render
+void r3(HUI_Element element)
 {
     if (element.style.visible == true)
     {
         if (strcmp(element.element, "Label") == 0)
         {
-            HUI_Label(element);
+            r1(element);
         }
         else if (strcmp(element.element, "Button") == 0)
         {
-            HUI_Button(element, element.callback);
+            r2(element, element.callback);
         }
     }
 }
@@ -117,6 +119,7 @@ struct HUI_Renderer
     void (*Label)(HUI_Element data);
     void (*Button)(HUI_Element data, functiontype callback);
     void (*Render)(HUI_Element data);
+    HUI_Element (*NewElement)(char *name);
 } HUI_Renderer;
 
 // This will initialize main things

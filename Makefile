@@ -14,7 +14,7 @@ Flags = -lopengl32 -lgdi32
 raylibsrc = ./dep/raylib/src
 
 # Include
-Include = -I${raylibsrc} -I./HopeUI
+Include = -I${raylibsrc} -I./HopeUI -I./dep/others
 
 # Set make command
 ifeq (${OS},Windows_NT)

@@ -3,8 +3,6 @@
 /* HopeUI Renderer */
 namespace Renderer
 {
-    int Background[4] = {0, 0, 0, 255};
-
     typedef void (*functiontype)();
 
     typedef struct HUI_Style
@@ -30,8 +28,6 @@ namespace Renderer
         int zIndex;
         functiontype callback;
     } HUI_Element;
-
-    void HUI_null() {}
 
     /* HopeUI Creates New Element */
     HUI_Element NewElement(char *name);

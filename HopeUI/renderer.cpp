@@ -9,6 +9,8 @@ namespace rl
 }
 
 rl::Font HUI_Font = rl::GetFontDefault();
+int Background[4] = {0, 0, 0, 255};
+void HUI_null() {}
 
 rl::Color NewColor(int *rgba)
 {
@@ -152,14 +154,6 @@ void Renderer::Init(int width, int height, char *title)
     rl::SetTraceLogLevel(rl::LOG_ERROR);
     rl::SetTargetFPS(60);
     rl::InitWindow(width, height, title);
-    while (!rl::WindowShouldClose())
-    {
-        rl::BeginDrawing();
-        rl::DrawFPS(10, 10);
-
-        rl::EndDrawing();
-    }
-    rl::CloseWindow();
 }
 
 void Renderer::GameLoop(functiontype callback)
@@ -168,8 +162,9 @@ void Renderer::GameLoop(functiontype callback)
     {
         rl::BeginDrawing();
         rl::ClearBackground(NewColor(Background));
-        callback();
         rl::DrawFPS(10, 10);
+        callback();
+        rl::EndDrawing();
     }
 }
 

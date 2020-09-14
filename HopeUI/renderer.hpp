@@ -5,7 +5,7 @@ namespace Renderer
 {
     typedef void (*functiontype)();
 
-    typedef struct HUI_Style
+    typedef struct Style
     {
         int x;
         int y;
@@ -17,29 +17,29 @@ namespace Renderer
         int spacing;
         bool visible;
         float border_roundness;
-    } HUI_Style;
+    } Style;
 
-    typedef struct HUI_Element
+    typedef struct Element
     {
         char *id;
         char *element;
         char *content;
-        HUI_Style style;
+        Style style;
         int zIndex;
         functiontype callback;
-    } HUI_Element;
+    } Element;
 
     /* HopeUI Creates New Element */
-    HUI_Element NewElement(char *name);
+    Element NewElement(char *name);
 
     /* HopeUI Label Element */
-    void Label(HUI_Element data);
+    void Label(Element data);
 
     /* HopeUI Button Element */
-    void Button(HUI_Element element, functiontype callback);
+    void Button(Element element, functiontype callback);
 
     /* HopeUI Element Rendering */
-    void Render(HUI_Element element);
+    void Render(Element element);
 
     /* HopeUI Initializes New Window */
     void Init(int width, int height, char *title);

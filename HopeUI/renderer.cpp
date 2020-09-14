@@ -1,5 +1,6 @@
 #include "renderer.hpp"
 #include "string.h"
+#include "stdio.h"
 
 using namespace Renderer;
 
@@ -24,32 +25,34 @@ rl::Color NewColor(int *rgba)
     return c;
 }
 
-HUI_Element Renderer::NewElement(char *name)
+Element Renderer::NewElement(char *name)
 {
     int background[4] = {255, 255, 255, 255};
     int foreground[4] = {0, 0, 0, 255};
 
-    HUI_Style style = {0, 0, 100, 50,
+    Style style = {0, 0, 100, 50,
                        background, foreground,
                        25, 2, true, 0};
 
-    HUI_Element e = {(char *)"undefined", name, (char *)"",
+    Element e = {(char *)"undefined", name, (char *)"",
                      style, 0, &HUI_null};
 
     return e;
 }
 
 // Label
-void Renderer::Label(HUI_Element data)
+void Renderer::Label(Element data)
 {
-    HUI_Style ds = data.style;
+    Style ds = data.style;
     rl::Color color = NewColor(data.style.foreground);
     rl::Vector2 pos;
     pos.x = (float)ds.x;
     pos.y = (float)ds.y;
 
+    //rl::DrawText(data.content, ds.x, ds.y, ds.fontSize, color);
+
     rl::DrawTextEx(
-        HUI_Font,
+        rl::GetFontDefault(),
         data.content,
         pos,
         (float)ds.fontSize,
@@ -58,7 +61,7 @@ void Renderer::Label(HUI_Element data)
 }
 
 // Button
-void Renderer::Button(HUI_Element element, functiontype callback)
+void Renderer::Button(Element element, functiontype callback)
 {
     int width = element.style.width;
     int height = element.style.height;
@@ -102,7 +105,7 @@ void Renderer::Button(HUI_Element element, functiontype callback)
         element.style.border_roundness,
         24, NewColor(element.style.background));
 
-    HUI_Element button_text = element;
+    Element button_text = element;
     button_text.style.x = targetX;
     button_text.style.y = targetY;
     Label(button_text);
@@ -121,7 +124,7 @@ void Renderer::Button(HUI_Element element, functiontype callback)
                 rec,
                 element.style.border_roundness,
                 24, NewColor(element.style.foreground));
-            HUI_Element new_button_text = button_text;
+            Element new_button_text = button_text;
             new_button_text.style.foreground = element.style.background;
             Label(new_button_text);
         }
@@ -133,15 +136,15 @@ void Renderer::Button(HUI_Element element, functiontype callback)
 }
 
 // Render
-void Renderer::Render(HUI_Element element)
+void Renderer::Render(Element element)
 {
     if (element.style.visible == true)
     {
-        if (strcmp(element.element, "Label") == 0)
+        if (strcmp(element.element, (char*)"Label") == 0)
         {
             Label(element);
         }
-        else if (strcmp(element.element, "Button") == 0)
+        else if (strcmp(element.element, (char*)"Button") == 0)
         {
             Button(element, element.callback);
         }

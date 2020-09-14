@@ -5,7 +5,7 @@ File = ${FILE}
 Name = ${NAME}
 
 # Set compiler
-CC = gcc
+CC = g++
 
 # Flags
 Flags = -lopengl32 -lgdi32
@@ -13,8 +13,14 @@ Flags = -lopengl32 -lgdi32
 # set raylib src path
 raylibsrc = ./dep/raylib/src
 
+# Source Folder
+HopeUISrc = ./HopeUI
+
 # Include
 Include = -I${raylibsrc} -I./HopeUI -I./dep/others
+
+# Soure Files To Compile
+SrcInclude = ${HopeUISrc}/renderer.cpp
 
 # Set make command
 ifeq (${OS},Windows_NT)
@@ -26,9 +32,9 @@ endif
 # Set commands
 ifeq (${OS},Windows_NT)
 	Flags += -lwinmm
-	command = ${CC} ${File} -o ${Name}.exe ${Include} ${raylibsrc}/libraylib.a ${Flags}
+	command = ${CC} ${File} ${SrcInclude} -o ${Name}.exe ${Include} ${raylibsrc}/libraylib.a ${Flags}
 else
-	command = ${CC} ${File} -o ${Name} ${Include} ${raylibsrc}/libraylib.a ${Flags}
+	command = ${CC} ${File} ${SrcInclude} -o ${Name} ${Include} ${raylibsrc}/libraylib.a ${Flags}
 endif
 
 compile:

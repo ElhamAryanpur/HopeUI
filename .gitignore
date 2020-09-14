@@ -4,3 +4,4 @@ bin
 dep/raylib/srcdev
 dep/raylib/src/*.o
 dep/raylib/src/libraylib.a
+HUI.exe

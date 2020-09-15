@@ -3,7 +3,7 @@
 
 using namespace Renderer;
 
-int Background[4] = {0, 0, 0, 255};
+int Background[4] = {18, 25, 32, 255};
 void HUI_null() {}
 
 rl::Color NewColor(int *rgba)
@@ -145,7 +145,7 @@ void Renderer::Render(Element element)
     }
 }
 
-void Renderer::Init(int width, int height, char *title)
+void Renderer::Window::Init(int width, int height, char *title)
 {
     SetConfigFlags(rl::FLAG_WINDOW_RESIZABLE);
     rl::SetTraceLogLevel(rl::LOG_ERROR);
@@ -153,7 +153,7 @@ void Renderer::Init(int width, int height, char *title)
     rl::InitWindow(width, height, title);
 }
 
-void Renderer::GameLoop(functiontype callback)
+void Renderer::Window::GameLoop(functiontype callback)
 {
     while (!rl::WindowShouldClose())
     {
@@ -165,7 +165,7 @@ void Renderer::GameLoop(functiontype callback)
     }
 }
 
-void Renderer::Close()
+void Renderer::Window::Close()
 {
     rl::CloseWindow();
 }

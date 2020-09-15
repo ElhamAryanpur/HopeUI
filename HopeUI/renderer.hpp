@@ -50,13 +50,18 @@ namespace Renderer
     /* HopeUI Element Rendering */
     void Render(Element element);
 
-    /* HopeUI Initializes New Window */
-    void Init(int width, int height, char *title);
+    /* Window Class */
+    class Window
+    {
+    public:
+        /* HopeUI Initializes New Window */
+        void Init(int width, int height, char *title);
 
-    /* HopeUI Game Loop */
-    void GameLoop(functiontype callback);
+        /* HopeUI Game Loop */
+        void GameLoop(functiontype callback);
 
-    /* HopeUI Close Window */
-    void Close();
+        /* HopeUI Close Window */
+        void Close();
+    };
 
 } // namespace Renderer

@@ -1,15 +1,8 @@
 #include "renderer.hpp"
 #include "string.h"
-#include "stdio.h"
 
 using namespace Renderer;
 
-namespace rl
-{
-#include "raylib.h"
-}
-
-rl::Font HUI_Font = rl::GetFontDefault();
 int Background[4] = {0, 0, 0, 255};
 void HUI_null() {}
 
@@ -31,11 +24,12 @@ Element Renderer::NewElement(char *name)
     int foreground[4] = {0, 0, 0, 255};
 
     Style style = {0, 0, 100, 50,
-                       background, foreground,
-                       25, 2, true, 0};
+                   background, foreground,
+                   rl::GetFontDefault(),
+                   25, 2, true, 0};
 
     Element e = {(char *)"undefined", name, (char *)"",
-                     style, 0, &HUI_null};
+                 style, 0, &HUI_null};
 
     return e;
 }
@@ -52,7 +46,7 @@ void Renderer::Label(Element data)
     //rl::DrawText(data.content, ds.x, ds.y, ds.fontSize, color);
 
     rl::DrawTextEx(
-        rl::GetFontDefault(),
+        ds.font,
         data.content,
         pos,
         (float)ds.fontSize,
@@ -67,7 +61,7 @@ void Renderer::Button(Element element, functiontype callback)
     int height = element.style.height;
 
     rl::Vector2 textSize = rl::MeasureTextEx(
-        HUI_Font,
+        element.style.font,
         element.content,
         (float)element.style.fontSize,
         (float)element.style.spacing);
@@ -140,11 +134,11 @@ void Renderer::Render(Element element)
 {
     if (element.style.visible == true)
     {
-        if (strcmp(element.element, (char*)"Label") == 0)
+        if (strcmp(element.element, (char *)"Label") == 0)
         {
             Label(element);
         }
-        else if (strcmp(element.element, (char*)"Button") == 0)
+        else if (strcmp(element.element, (char *)"Button") == 0)
         {
             Button(element, element.callback);
         }

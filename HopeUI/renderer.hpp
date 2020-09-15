@@ -3,6 +3,11 @@
 /* HopeUI Renderer */
 namespace Renderer
 {
+    namespace rl
+    {
+#include "raylib.h"
+    }
+
     typedef void (*functiontype)();
 
     typedef struct Style
@@ -13,6 +18,7 @@ namespace Renderer
         int height;
         int *background;
         int *foreground;
+        rl::Font font;
         int fontSize;
         int spacing;
         bool visible;

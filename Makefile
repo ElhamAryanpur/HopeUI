@@ -38,7 +38,9 @@ else
 endif
 
 compile:
+	@echo off
 	${command}
 
 build:
+	@echo off
 	cd ${raylibsrc} && ${makecmd}

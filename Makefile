@@ -5,7 +5,7 @@ File = ${FILE}
 Name = ${NAME}
 
 # Set compiler
-CC = g++
+CC = gcc
 
 # Flags
 Flags = -lopengl32 -lgdi32
@@ -20,7 +20,7 @@ HopeUISrc = ./HopeUI
 Include = -I${raylibsrc} -I./HopeUI -I./dep/others
 
 # Soure Files To Compile
-SrcInclude = ${HopeUISrc}/renderer.cpp
+SrcInclude = ${HopeUISrc}/renderer.c
 
 # Set make command
 ifeq (${OS},Windows_NT)

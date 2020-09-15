@@ -1,4 +1,5 @@
-#include "HopeUI.hpp"
+#include "HopeUI.h"
+#include <stdio.h>
 
 int x = 0; // Define an X variable
 
@@ -7,7 +8,7 @@ int x = 0; // Define an X variable
 void loop()
 {
     // Let's make a label element
-    auto Text = Renderer::NewElement((char *)"Button");
+    HUI_Element Text = HopeUI.Renderer.NewElement((char *)"Button");
 
     // Have it say hello World!
     Text.content = (char *)"Hello World!";
@@ -24,22 +25,20 @@ void loop()
     Text.style.background = background;
 
     // Finally give it to render
-    Renderer::Render(Text);
+    HopeUI.Renderer.Render(Text);
 }
 
 int main()
 {
     // Let's make the window first
-    Renderer::Window win;
-    
     // With 800 width, 600 height, and that title
-    win.Init(800, 600, (char *)"Hello World!");
+    HopeUI.Renderer.Init(800, 600, (char *)"Hello World!");
 
     // And slap our gameloop
-    win.GameLoop(&loop);
+    HopeUI.Renderer.GameLoop(&loop);
 
     // And cleanup after window is closed
-    win.Close();
+    HopeUI.Renderer.Close();
 
     // finally close up everything
     return 0;

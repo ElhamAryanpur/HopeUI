@@ -8,8 +8,10 @@ namespace Renderer
 #include "raylib.h"
     }
 
+    /* Function Type */
     typedef void (*functiontype)();
 
+    /* Structure for styling of elements */
     typedef struct Style
     {
         int x;
@@ -25,6 +27,7 @@ namespace Renderer
         float border_roundness;
     } Style;
 
+    /* Element Structure */
     typedef struct Element
     {
         char *id;

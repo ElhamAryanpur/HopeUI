@@ -4,4 +4,12 @@ bin
 dep/raylib/srcdev
 dep/raylib/src/*.o
 dep/raylib/src/libraylib.a
+
+HopeUI/dep/raylib/srcdev
+HopeUI/dep/raylib/*.o
+HopeUI/dep/raylib/libraylib.a
+
 HUI.exe
+HopeUI/libhopeui.a
+HopeUI/*.o
+HopeUI/include/*.h

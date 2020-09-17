@@ -526,6 +526,7 @@ else
 endif
 
 # Compile all modules with their prerequisites
+build: $(OBJS)
 
 # Compile core module
 core.o : core.c raylib.h rlgl.h utils.h raymath.h camera.h gestures.h

@@ -29,6 +29,6 @@ And then run the output, being `HopeUI.exe` on windows, and without `.exe` or pl
 
 Currently Documentation is not provided. But soon enought it'll be written as soon as an alpha release comes.
 
-## Dep
+## Dependencies
 
 - [GCC](https://gcc.gnu.org/)

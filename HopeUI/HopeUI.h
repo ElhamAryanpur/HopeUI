@@ -7,7 +7,7 @@ struct HopeUI
     struct Renderer
     {
         HUI_Element Element;
-        HUI_Element (*NewElement)();
+        HUI_Element (*NewElement)(char*);
         void (*Label)(HUI_Element);
         void (*Button)(HUI_Element, functiontype);
         void (*Render)(HUI_Element);

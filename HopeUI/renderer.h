@@ -1,10 +1,5 @@
 #pragma once
 
-/* Boolean */
-#define false 0
-#define true 1
-typedef int bool;
-
 /* Function Type */
 typedef void (*functiontype)();
 
@@ -19,7 +14,7 @@ typedef struct hrs
     int *foreground;
     int fontSize;
     int spacing;
-    bool visible;
+    int visible;
     float border_roundness;
 } hrs;
 

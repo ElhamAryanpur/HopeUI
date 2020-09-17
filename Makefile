@@ -10,17 +10,11 @@ CC = gcc
 # Flags
 Flags = -lopengl32 -lgdi32
 
-# set raylib src path
-raylibsrc = ./dep/raylib/src
-
 # Source Folder
 HopeUISrc = ./HopeUI
 
 # Include
-Include = -I${raylibsrc} -I./HopeUI -I./dep/others
-
-# Soure Files To Compile
-SrcInclude = ${HopeUISrc}/renderer.c
+Include = ${HopeUISrc}/include
 
 # Set make command
 ifeq (${OS},Windows_NT)
@@ -32,13 +26,13 @@ endif
 # Set commands
 ifeq (${OS},Windows_NT)
 	Flags += -lwinmm
-	command = ${CC} ${File} ${SrcInclude} -o ${Name}.exe ${Include} ${raylibsrc}/libraylib.a ${Flags}
+	command = ${CC} ${File} -o ${Name}.exe ${Include} ${HopeUISrc}/libhopeui.a ${Flags}
 else
-	command = ${CC} ${File} ${SrcInclude} -o ${Name} ${Include} ${raylibsrc}/libraylib.a ${Flags}
+	command = ${CC} ${File} -o ${Name} ${Include} ${HopeUISrc}/libhopeui.a ${Flags}
 endif
 
 compile:
 	@${command}
 
 build:
-	@cd ${raylibsrc} && ${makecmd}
+	@cd ${HopeUISrc} && ${makecmd}

@@ -1,6 +1,6 @@
 #include "renderer.h"
 #include "raylib.h"
-#include "string.h"
+#include <string.h>
 
 int Background[4] = {18, 25, 32, 255};
 char *HUI_Font = "default";
@@ -33,7 +33,7 @@ HUI_Element hrne(char *name)
 
     hrs style = {0, 0, 100, 50,
                  background, foreground,
-                 25, 2, true, 0};
+                 25, 2, 1, 0};
 
     HUI_Element e = {(char *)"undefined", name, (char *)"",
                      style, 0, &HUI_null};
@@ -139,7 +139,7 @@ void hrb(HUI_Element element, functiontype callback)
 // Render
 void hrr(HUI_Element element)
 {
-    if (element.style.visible == true)
+    if (element.style.visible == 1)
     {
         if (strcmp(element.element, (char *)"Label") == 0)
         {

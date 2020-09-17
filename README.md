@@ -1,5 +1,7 @@
 # HopeUIC
 
+![CodeQL](https://github.com/BlueElham/HopeUI/workflows/CodeQL/badge.svg)
+
 Custom UI for [HopeServer](https://github.com/BlueElham/HopeServer) project. But C version.
 
 ## Status

@@ -17,6 +17,7 @@ void loop()
     Text.style.width = 300;
     Text.style.height = 150;
     Text.style.fontSize = 50;
+    Text.style.border_roundness = 0.5;
 
     int color[4] = {141, 189, 255, 255};
     Text.style.foreground = color;

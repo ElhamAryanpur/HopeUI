@@ -14,7 +14,7 @@ Flags = -lopengl32 -lgdi32
 HopeUISrc = ./HopeUI
 
 # Include
-Include = ${HopeUISrc}/include
+Include = -I${HopeUISrc}/include
 
 # Set make command
 ifeq (${OS},Windows_NT)
@@ -27,8 +27,10 @@ endif
 ifeq (${OS},Windows_NT)
 	Flags += -lwinmm
 	command = ${CC} ${File} -o ${Name}.exe ${Include} ${HopeUISrc}/libhopeui.a ${Flags}
+	remove = del /f
 else
 	command = ${CC} ${File} -o ${Name} ${Include} ${HopeUISrc}/libhopeui.a ${Flags}
+	remove = rm -f
 endif
 
 all:
@@ -40,3 +42,7 @@ compile:
 
 build:
 	@cd ${HopeUISrc} && ${makecmd}
+
+clean:
+	@cd ${HopeUISrc} && ${remove} *.o
+	@cd ${HopeUISrc}/dep/raylib && ${remove} *.o

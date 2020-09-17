@@ -11,8 +11,8 @@ This project is under work.
 To build, first of all:
 
 ```bash
-git clone https://github.com/BlueElham/HopeUIC
-cd HopeUIC
+git clone https://github.com/BlueElham/HopeUI
+cd HopeUI
 
 make build
 ```

@@ -13,14 +13,12 @@ To build, first of all:
 ```bash
 git clone https://github.com/BlueElham/HopeUI
 cd HopeUI
-
-make build
 ```
 
 And to run the demo:
 
 ```bash
-make compile FILE=Demo.c NAME=HopeUI
+make FILE=Demo.c NAME=HopeUI
 ```
 
 And then run the output, being `HopeUI.exe` on windows, and without `.exe` or platform specific extension elsewhere.

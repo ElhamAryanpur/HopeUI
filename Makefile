@@ -31,6 +31,10 @@ else
 	command = ${CC} ${File} -o ${Name} ${Include} ${HopeUISrc}/libhopeui.a ${Flags}
 endif
 
+all:
+	@cd ${HopeUISrc} && ${makecmd}
+	@${command}
+
 compile:
 	@${command}
 

@@ -176,3 +176,23 @@ void hrc()
 {
     CloseWindow();
 }
+
+int hrgww()
+{
+    return GetScreenWidth();
+}
+
+int hrgwh()
+{
+    return GetScreenHeight();
+}
+
+void hrsww(int w)
+{
+    SetWindowSize(w, GetScreenHeight());
+}
+
+void hrswh(int h)
+{
+    SetWindowSize(GetScreenWidth(), h);
+}

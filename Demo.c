@@ -12,10 +12,10 @@ void loop()
 
     // Have it say hello World!
     Text.content = (char *)"Hello World!";
-    Text.style.y = 100;
-    Text.style.x = 100;
     Text.style.width = 300;
     Text.style.height = 150;
+    Text.style.y = HopeUI.Renderer.GetWindowHeight() / 2 - 150 / 2;
+    Text.style.x = HopeUI.Renderer.GetWindowWidth() / 2 - 150;
     Text.style.fontSize = 50;
     Text.style.border_roundness = 0.5;
 

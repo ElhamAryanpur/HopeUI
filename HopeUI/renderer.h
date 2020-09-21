@@ -3,6 +3,8 @@
 /* Function Type */
 typedef void (*functiontype)();
 
+// ============================= Elements ===============================//
+
 /* Structure for styling of elements */
 typedef struct hrs
 {
@@ -38,6 +40,8 @@ void hrl(HUI_Element data);
 /* HopeUI Button Element */
 void hrb(HUI_Element element, functiontype callback);
 
+// ============================= Window ===============================//
+
 /* HopeUI Element Rendering */
 void hrr(HUI_Element element);
 
@@ -49,3 +53,15 @@ void hrgl(functiontype callback);
 
 /* HopeUI Close Window */
 void hrc();
+
+/* HopeUI Get Window Width */
+int hrgww();
+
+/* HopeUI Get Window Height */
+int hrgwh();
+
+/* HopeUI Set Window Width */
+void hrsww(int width);
+
+/* HopeUI Set Window Height */
+void hrswh(int height);

@@ -3,6 +3,10 @@
 
 int x = 0; // Define an X variable
 
+void print(){
+    puts("Clicked!");
+}
+
 // This will be the game loop function.
 // Everything inside will run on gameloop
 void loop()
@@ -18,6 +22,7 @@ void loop()
     Text.style.x = HopeUI.Renderer.GetWindowWidth() / 2 - 150;
     Text.style.fontSize = 50;
     Text.style.border_roundness = 0.5;
+    Text.callback = &print;
 
     int color[4] = {141, 189, 255, 255};
     Text.style.foreground = color;

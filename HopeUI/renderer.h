@@ -16,8 +16,9 @@ typedef struct hrs
     int *foreground;
     int fontSize;
     int spacing;
-    int visible;
     float border_roundness;
+    int isVisible;
+    int isSelected;
 } hrs;
 
 /* Element Structure */
@@ -26,6 +27,7 @@ typedef struct HUI_Element
     char *id;
     char *element;
     char *content;
+    char *placeholder;
     hrs style;
     int zIndex;
     functiontype callback;
@@ -35,10 +37,13 @@ typedef struct HUI_Element
 HUI_Element hrne(char *name);
 
 /* HopeUI Label Element */
-void hrl(HUI_Element data);
+void hrel(HUI_Element data);
 
 /* HopeUI Button Element */
-void hrb(HUI_Element element, functiontype callback);
+void hreb(HUI_Element element, functiontype callback);
+
+/* HopeUI Input Element */
+void hrei(HUI_Element element);
 
 // ============================= Window ===============================//
 

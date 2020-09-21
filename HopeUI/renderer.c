@@ -33,16 +33,16 @@ HUI_Element hrne(char *name)
 
     hrs style = {0, 0, 100, 50,
                  background, foreground,
-                 25, 2, 1, 0};
+                 25, 2, 0, 1, 1};
 
     HUI_Element e = {(char *)"undefined", name, (char *)"",
-                     style, 0, &HUI_null};
+                     (char *)"PlaceHolder", style, 0, &HUI_null};
 
     return e;
 }
 
 // Label
-void hrl(HUI_Element data)
+void hrel(HUI_Element data)
 {
     hrs ds = data.style;
     Color color = NewColor(data.style.foreground);
@@ -62,7 +62,7 @@ void hrl(HUI_Element data)
 }
 
 // Button
-void hrb(HUI_Element element, functiontype callback)
+void hreb(HUI_Element element, functiontype callback)
 {
     int width = element.style.width;
     int height = element.style.height;
@@ -109,7 +109,7 @@ void hrb(HUI_Element element, functiontype callback)
     HUI_Element button_text = element;
     button_text.style.x = targetX;
     button_text.style.y = targetY;
-    hrl(button_text);
+    hrel(button_text);
 
     Vector2 mousePos = GetMousePosition();
     int mx = (int)mousePos.x;
@@ -127,7 +127,7 @@ void hrb(HUI_Element element, functiontype callback)
                 24, NewColor(element.style.foreground));
             HUI_Element new_button_text = button_text;
             new_button_text.style.foreground = element.style.background;
-            hrl(new_button_text);
+            hrel(new_button_text);
         }
         if (IsMouseButtonReleased(0) == true)
         {
@@ -136,18 +136,27 @@ void hrb(HUI_Element element, functiontype callback)
     }
 }
 
+// Input
+void hrei(HUI_Element element){
+
+}
+
 // Render
 void hrr(HUI_Element element)
 {
-    if (element.style.visible == 1)
+    if (element.style.isVisible == 1)
     {
         if (strcmp(element.element, (char *)"Label") == 0)
         {
-            hrl(element);
+            hrel(element);
         }
         else if (strcmp(element.element, (char *)"Button") == 0)
         {
-            hrb(element, element.callback);
+            hreb(element, element.callback);
+        }
+        else if (strcmp(element.element, (char *)"Input") == 0)
+        {
+            hrei(element);
         }
     }
 }

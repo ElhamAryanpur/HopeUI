@@ -22,8 +22,8 @@ struct HopeUI
 } HopeUI = {
     .Renderer = {
         .NewElement = hrne,
-        .Label = hrl,
-        .Button = hrb,
+        .Label = hrel,
+        .Button = hreb,
         .Render = hrr,
         .Init = hri,
         .GameLoop = hrgl,
